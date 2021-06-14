@@ -1,0 +1,20 @@
+[line_break]
+disabled = true
+
+[time]
+disabled = true
+
+[username]
+style_user = "green bold"
+style_root = "black bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  " [$hostname](bold blue) ﬌ "
+disabled = false
+[character]                       
+success_symbol = "[](bold green)"
+
