@@ -1,0 +1,7 @@
+$mod+w 		WEB BROWSER
+$mod+p 		FILE MANAGER
+$mod+Shift+p	FILE MANAGER as ROOT
+$mod+n		NEWS/RSS READER
+$mod+y 		YOUTUBE
+$mod+e 		TEXT-EDITOR
+$mod+s		SCREENSHOT
