@@ -22,8 +22,10 @@ mkdir ../.config/i3status
 mv i3status ../.config/i3status/config
 
 # Install Other Useful Software (some is necessary for the previous configs)
-#yay -S brave spotify zoom fluent-reader
+
 pacman -S deepin-screenshot mpv youtube-dl rofi transmission-gtk croc code blender
 
 cd
 git clone https://github.com/palkiakerr/wallpapers
+
+echo "Please Run: yay -S brave spotify zoom fluent-reader"
