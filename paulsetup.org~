@@ -1,0 +1,95 @@
+#+TITLE: My Linux Configuration
+#+PROPERTY:  :tangle "setup.sh"
+
+* TODO Make code blocks visually distinct
+
+* TODO Look for dotfile or config folder management solution
+
+* Clean Up Manjaro
+** Remove old .profile
+Contains defaults for palemoon and stuff
+#+begin_src shell
+  rm ../.profile ../.bash_profile
+#+end_src
+
+
+* Software Installation
+** Fonts
+Monospace fonts and icon sets
+#+begin_src shell
+  pacman -S ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono ttf-fira-code --noconfirm
+#+end_src
+
+** Rust alternatives
+A collection of "better defaults" Rust programs for the cli, already aliased in .bashrc 
+#+begin_src shell
+  pacman -S exa bat --noconfirm
+#+end_src
+
+** Terminal Prompt
+We use the Starship prompt with the alacritty terminal
+#+begin_src shell
+  pacman -S alacritty --noconfirm
+  sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+#+end_src
+
+** Desktop Software
+A collection of standard desktop user software
+#+begin_src shell
+  pacman -S emacs deepin-screenshot mpv youtube-dl rofi transmission-gtk croc code blender neovim zathura zathura-pdf-mupdf
+  su - kerr -c "yay -S brave spotify zoom fluent-reader --noconfirm"
+#+end_src
+
+** Research Software
+Software I use more for work
+#+begin_src shell
+  su - kerr -c "yay -S zotero --noconfirm"
+#+end_src
+
+
+* File Syncing
+** Install Syncthing and the 3rd-party tray
+Not too sure if the syncthing .config import will work
+#+begin_src shell
+  pacman -S syncthing
+  su - kerr -c "yay -S syncthingtray --noconfirm"
+  su - kerr -c "systemctl --user enable syncthing.service"
+  mkdir ../.config/syncthing
+  mv ./syncthing/* ../.config/syncthing
+  echo "syncthingtray" >> ../.bash_profile
+#+end_src
+
+* Configuration
+
+** Move config files
+Move the config files into their correct places. This step necessitates the location of the repo in /home/
+#+begin_src shell
+  mkdir ../.emacs.d
+  mv init.el ../.emacs.d/init.el
+
+  echo "background_opacity: 0.95" >> ~/.config/alacritty.yml
+
+  mv i3config ../.i3/config
+  mkdir ../.config/i3status
+  mv i3status ../.config/i3status/config
+  mv bashrc ../.bashrc
+  mv starship.toml ../.config/starship.toml
+#+end_src
+
+
+** Swap ctrl and caps keys
+#+begin_src shell
+  echo '/usr/bin/setxkbmap -option "ctrl:nocaps"' >> ../.bash_profile
+#+end_src
+
+** Wallpapers
+Clone wallpapers repo ready to use
+#+begin_src shell
+  cd
+  git clone https://github.com/palkiakerr/wallpapers
+#+end_src
+
+
+* TODO Features To Add [1/2]
+- [ ] Remove Palemoon and it's defaults
+- [X] Syncthing and it's tray icon
